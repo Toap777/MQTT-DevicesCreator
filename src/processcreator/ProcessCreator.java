@@ -9,27 +9,30 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- *
+ * Device creation tool. Runs multiple instances of device java program.
  * @author eliseu
  */
 public class ProcessCreator {
+    //amount of devices to create
     private static final int N_DEVICES = 20;
+    //rate between creation of each device in ms.
     private static final int SAMPLING_RATE = 10000;
 
     /**
+     * Starts up {@value N_DEVICES} devices in an interval of {@value SAMPLING_RATE} between each device.
      * @param args the command line arguments
-     * @throws java.lang.InterruptedException
-     * @throws java.io.IOException
+     * @throws java.lang.InterruptedException ON system interrupt
+     * @throws java.io.IOException On error reading / writin specified program file.
      */
     public static void main(String[] args) throws InterruptedException, IOException {
         // TODO code application logic here
         
-        String path = new File("").getAbsolutePath();
+        String path = new File("").getAbsolutePath(); //get local path
         String execLine = "java -jar " + path + "/MultiDevice/dist/MultiDevice.jar ";
         
         for (int i = 0; i < N_DEVICES; i++) {
+            //start jar compiled program by execute command in Runtime.
             Runtime.getRuntime().exec(execLine);
-            
             System.out.println("Device number: " + i);
             Thread.sleep(SAMPLING_RATE);
         }
