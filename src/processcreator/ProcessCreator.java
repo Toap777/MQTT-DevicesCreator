@@ -5,6 +5,7 @@
  */
 package processcreator;
 
+import multidevice.TestDevice;
 import java.io.File;
 import java.io.IOException;
 
@@ -14,9 +15,9 @@ import java.io.IOException;
  */
 public class ProcessCreator {
     //amount of devices to create
-    private static final int N_DEVICES = 20;
+    private static final int N_DEVICES = 40;
     //rate between creation of each device in ms.
-    private static final int SAMPLING_RATE = 10000;
+    private static final int SAMPLING_RATE = 5000;
 
     /**
      * Starts up {@value N_DEVICES} devices in an interval of {@value SAMPLING_RATE} between each device.
@@ -25,18 +26,11 @@ public class ProcessCreator {
      * @throws java.io.IOException On error reading / writin specified program file.
      */
     public static void main(String[] args) throws InterruptedException, IOException {
-        // TODO code application logic here
-        
-        String path = new File("").getAbsolutePath(); //get local path
-        String execLine = "java -jar " + path + "/MultiDevice/dist/MultiDevice.jar ";
-        
         for (int i = 0; i < N_DEVICES; i++) {
             //start jar compiled program by execute command in Runtime.
-            Runtime.getRuntime().exec(execLine);
-            System.out.println("Device number: " + i);
-            Thread.sleep(SAMPLING_RATE);
+            TestDevice t = new TestDevice();
+            t.run();
         }
         System.out.println("End.");
     }
-    
 }
