@@ -9,8 +9,8 @@
     <version>1.0</version>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -27,8 +27,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.1.1</version>
                 <configuration>
                     <outputDirectory>
                         ${project.build.directory}/libs
@@ -38,14 +39,15 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>1.0</version>
+                <version>3.2.2</version>
                 <configuration>
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
+                            <mainClass>processcreator.ProcessCreator</mainClass>
                         </manifest>
-                        <manifestFile>src/META-INF/MANIFEST.MF</manifestFile>
+
                     </archive>
                 </configuration>
             </plugin>

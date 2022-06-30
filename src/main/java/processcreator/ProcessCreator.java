@@ -19,9 +19,9 @@ import java.util.List;
  */
 public class ProcessCreator {
     //amount of devices to create
-    private static final int N_DEVICES = 80;
+    private static final int N_DEVICES = 20;
     //rate between creation of each device in ms.
-    private static final int SAMPLING_RATE = 5000;
+    private static final int SAMPLING_RATE = 10000;
 
     private static List<TestDevice> devices = new ArrayList<>();
 
